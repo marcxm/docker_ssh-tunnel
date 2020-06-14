@@ -1,0 +1,20 @@
+version: "3.3"
+
+services:
+
+  tunneler:
+    build: .
+    image: "tunneler:stable-20200607-slim"
+    hostname: tunneler
+    restart: always
+    container_name: "tunneler"
+    ports:
+      - "2224:22"
+    networks:
+      mynetwork:
+        aliases:
+          - tunneler
+networks:
+  mynetwork:
+    external:
+     name: mynetwork
